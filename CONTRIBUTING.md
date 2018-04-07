@@ -37,9 +37,8 @@ brew cask install vagrant
 Now you can setup your virtual environment for testing:
 
 ```bash
-virtualenv --python=$(which python2.7) .venv
-source .venv/bin/activate
-pip install --no-deps -r tests/test-requirements.txt
+pip install -U pipenv
+pipenv install --dev
 ```
 
 Run the full lifecycle test on a given `<PLATFORM>`. Allowed values for
@@ -47,7 +46,7 @@ Run the full lifecycle test on a given `<PLATFORM>`. Allowed values for
 
 ```bash
 source molecule/<PLATFORM>.sh
-molecule test
+pipenv run molecule test
 ```
 
 Unset the `MOLECULE_` environment variables:
